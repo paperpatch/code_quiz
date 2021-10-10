@@ -172,4 +172,52 @@ const questions = [
       {text: 'Prints the value as such',correct: false},
     ]
   },
+  {question: 'In the JavaScript, which one of the following is not considered as an error',
+    answers: [
+      {text: 'Syntax error',correct: false},
+      {text: 'Missing of semicolons',correct: false},
+      {text: 'Division by zero',correct: true},
+      {text: 'Missing of Bracket',correct: false},
+    ]
+  },
+  {question: 'Which of the following given functions of the Number Object formats a number with a different number of digits to the right of the decimal?',
+    answers: [
+    {text: 'toExponential()',correct: false},
+    {text: 'toFixed()',correct: true},
+    {text: 'toPrecision()',correct: false},
+    {text: 'toLocaleString()',correct: false},
+    ]
+  },
+  {question: 'Which of the following number object function returns the value of the number?',
+    answers: [
+    {text: 'toString()',correct: false},
+    {text: 'valueOf()',correct: true},
+    {text: 'toLocaleString()',correct: false},
+    {text: 'toPrecision()',correct: false},
+    ]
+  },
+  {question: 'Which of the following function of the String object returns the character in the string starting at the specified position via the specified number of characters?',
+    answers: [
+    {text: 'slice()',correct: false},
+    {text: 'split()',correct: false},
+    {text: 'substr()',correct: true},
+    {text: 'search()',correct: false},
+    ]
+  },
+  {question: 'In JavaScript the x===y statement implies that:',
+    answers: [
+    {text: 'Both x and y are equal in value, type and reference address as well.',correct: false},
+    {text: 'Both are x and y are equal in value only.',correct: false},
+    {text: 'Both are equal in the value and data type.',correct: true},
+    {text: 'Both are not same at all.',correct: false},
+    ]
+  },
+  {question: 'Choose the correct snippet from the following to check if the variable "a" is not equal the "NULL":',
+    answers: [
+    {text: 'if(a!==null)',correct: true},
+    {text: 'if (a!)',correct: false},
+    {text: 'if(a!null)',correct: false},
+    {text: 'Pif(a!=null)',correct: false},
+    ]
+  },
 ]
