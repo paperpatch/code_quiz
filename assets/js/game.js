@@ -94,17 +94,17 @@ let questions = [{
 
 const SCORE_POINTS = 100
 const MAX_QUESTIONS = 4
-
-var startGame = () => {
-    let questionCounter = 0;
-    let score = 0;
-    let availableQuestions = [...questions]
+debugger;
+startGame = () => {
+    questionCounter = 0;
+    score = 0;
+    availableQuestions = [...questions]
     getNewQuestion();
 }
 
-var getNewQuestion = () => {
-    if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
-        localStorage.setItem('mostRecentScore', score);
+getNewQuestion = () => {
+    if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+        localStorage.setItem('mostRecentScore', score)
         return window.location.assign('/end.html')
     }
 
@@ -127,8 +127,8 @@ var getNewQuestion = () => {
 }
 
 choices.forEach(choice => {
-    choice.addEventListener('click', e=> {
-        if(!acceptAnswers) return
+    choice.addEventListener('click', e => {
+        if (!acceptAnswers) return
 
         acceptAnswers = false
         const selectedChoice = e.target
@@ -136,7 +136,7 @@ choices.forEach(choice => {
 
         let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'wrong'
 
-        if(classToApply === 'correct') {
+        if (classToApply === 'correct') {
             incrementScore(SCORE_POINTS)
         }
 
