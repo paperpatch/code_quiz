@@ -7,7 +7,7 @@ const progressBarFull = document.querySelector('#progressBarFull');
 let currentQuestion = {}
 let acceptingAnswers = true
 let score = 0
-let questionCounter = 0
+let count = 20
 let availableQuestions = []
 
 let questions = [{
@@ -90,6 +90,38 @@ let questions = [{
         choice4: 'Prints the value as such',
         answer: 3,
     },
+    {
+        question: 'Which built-in method combines the text of two strings and returns a new string?',
+        choice1: 'append()',
+        choice2: 'concat()',
+        choice3: 'attach()',
+        choice4: 'None of the above',
+        answer: 2,
+    },
+    {
+        question: "Which of the following function of Number object returns the number's value?",
+        choice1: 'toString()',
+        choice2: 'valueOf()',
+        choice3: 'toLocalString()',
+        choice4: 'toPrecision()',
+        answer: 2,
+    },
+    {
+        question: "Which of the following function of Array object calls a function for each element in the array?",
+        choice1: 'concat()',
+        choice2: 'every()',
+        choice3: 'filter()',
+        choice4: 'forEach()',
+        answer: 4,
+    },
+    {
+        question: "Which of the following function of Array object adds and/or removes elements from an array?",
+        choice1: 'toSource()',
+        choice2: 'sort()',
+        choice3: 'splice()',
+        choice4: 'unshift()',
+        answer: 3,
+    },
 ]
 
 const SCORE_POINTS = 100
@@ -98,9 +130,28 @@ const MAX_QUESTIONS = 4
 startGame = () => {
     questionCounter = 0
     score = 0
+    count = 20
     availableQuestions = [...questions]
+
     getNewQuestion()
 }
+
+// timer section
+
+var time = setInterval(myTimer, 1000);
+
+function myTimer() {
+    document.getElementById('timer').innerHTML = count - 1;
+    count--;
+    console.log(count);
+    if (count < 0) {
+        clearInterval(time);
+        alert("Time's Up!");
+        return window.location.assign('./end.html')
+    }
+}
+
+// pull new questions function. updates progress bar text/display and question numbers
 
 getNewQuestion = () => {
     if(availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
@@ -123,28 +174,28 @@ getNewQuestion = () => {
     })
 
     availableQuestions.splice(questionsIndex, 1)
-
-    acceptingAnswers = true
 }
+
+// Whenever you click an answer, it adds a class to show whether you're right or wrong. Then it shortly goes to the next question.
 
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
-        if(!acceptingAnswers) return
-
-        acceptingAnswers = false
+        // pulls the questions.answer.number array
         const selectedChoice = e.target
         const selectedAnswer = selectedChoice.dataset['number']
 
-        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'wrong'
+        // pick 'correct' if answer matches the number set, otherwise pick 'wrong'
+        let changeClass = selectedAnswer == currentQuestion.answer ? 'correct' : 'wrong'
 
-        if(classToApply === 'correct') {
+        if(changeClass === 'correct') {
             incrementScore(SCORE_POINTS)
         }
 
-        selectedChoice.parentElement.classList.add(classToApply)
+        selectedChoice.parentElement.classList.add(changeClass)
 
+        // make class disappear before going to the next question
         setTimeout(() => {
-            selectedChoice.parentElement.classList.remove(classToApply)
+            selectedChoice.parentElement.classList.remove(changeClass)
             getNewQuestion()
 
         }, 1000)

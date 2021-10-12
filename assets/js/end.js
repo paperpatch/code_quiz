@@ -10,6 +10,7 @@ const MAX_HIGH_SCORES = 5
 finalScore.innerText = mostRecentScore
 
 username.addEventListener('keyup', () => {
+    // makes it so that you can't enter a username in a blank state.
     saveScoreBtn.disabled = !username.value
 })
 
