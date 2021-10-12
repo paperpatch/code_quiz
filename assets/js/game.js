@@ -7,7 +7,7 @@ const progressBarFull = document.querySelector('#progressBarFull');
 let currentQuestion = {}
 let acceptingAnswers = true
 let score = 0
-let count = 20
+let count = 30
 let availableQuestions = []
 
 let questions = [{
@@ -130,11 +130,12 @@ const MAX_QUESTIONS = 4
 startGame = () => {
     questionCounter = 0
     score = 0
-    count = 20
+    count = 30
     availableQuestions = [...questions]
 
     getNewQuestion()
 }
+
 
 // timer section
 
@@ -142,13 +143,31 @@ var time = setInterval(myTimer, 1000);
 
 function myTimer() {
     document.getElementById('timer').innerHTML = count - 1;
+
+    // update persisted time interval
+    if (count-- > 0) {
+        window.sessionStorage.setItem('timeLeft', count)
+        console.log(sessionStorage);
+    } else {
+        window.sessionStorage.removeItem('timeLeft')
+    }
+
     count--;
     console.log(count);
+
     if (count < 0) {
         clearInterval(time);
         alert("Time's Up!");
         return window.location.assign('./end.html')
     }
+}
+
+// persisted time section
+window.onload = function () {
+    let timeInterval = 30;
+    // check if the session has the last counter value
+    let timeLeft = window.sessionStorage.getItem('timeleft') || 30;
+    console.log(timeLeft)
 }
 
 // pull new questions function. updates progress bar text/display and question numbers
