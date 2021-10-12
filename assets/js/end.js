@@ -1,7 +1,7 @@
 const username = document.querySelector('#username')
-const savedScoreBtn = document.querySelector('#saveScoreBtn')
+const saveScoreBtn = document.querySelector('#saveScoreBtn')
 const finalScore = document.querySelector('#finalScore')
-const mostRecentScore = document.querySelector('#mostRecentScore')
+const mostRecentScore = localStorage.getItem('mostRecentScore')
 
 const highScores = JSON.parse(localStorage.getItem('highScores')) || []
 
@@ -18,7 +18,7 @@ saveHighScore = e => {
 
     const score = {
         score: mostRecentScore,
-        name: username.ariaValueMax
+        name: username.value
     }
 
     highScores.push(score)
@@ -29,6 +29,6 @@ saveHighScore = e => {
 
     highScores.splice(5)
 
-    localStorage.setItem('highScore', JSON.stringify(highScores))
-    window.location.assign('/')
+    localStorage.setItem('highScores', JSON.stringify(highScores))
+    window.location.assign('./highscores.html')
 }
