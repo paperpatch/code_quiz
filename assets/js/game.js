@@ -144,15 +144,15 @@ function myTimer() {
     count--;
     document.getElementById('timer').innerHTML = count;
 
-/*     // update persisted time interval
-    if (count-- > 0) {
-        window.sessionStorage.setItem('timeLeft', count)
-        console.log(sessionStorage);
-    } else {
-        window.sessionStorage.removeItem('timeLeft')
-    } */
+    /*     // update persisted time interval
+        if (count-- > 0) {
+            window.sessionStorage.setItem('timeLeft', JSON.stringify(count))
+            console.log(sessionStorage);
+        } else {
+            window.sessionStorage.removeItem('timeLeft')
+        } */
 
-    
+
     console.log(count);
 
     if (count < 0) {
@@ -173,7 +173,7 @@ window.onload = function () {
 // pull new questions function. updates progress bar text/display and question numbers
 
 getNewQuestion = () => {
-    if(availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         localStorage.setItem('mostRecentScore', score)
 
         return window.location.assign('./end.html')
@@ -203,16 +203,14 @@ choices.forEach(choice => {
         const selectedChoice = e.target
         const selectedAnswer = selectedChoice.dataset['number']
 
-        // pick 'correct' if answer matches the number set, otherwise pick 'wrong'
+        // pick 'correct' if answer matches the number set, otherwise pick 'wrong'. Correct gains points. Wrong loses time by 5 sec.
         let changeClass = selectedAnswer == currentQuestion.answer ? 'correct' : 'wrong'
-
-        if(changeClass === 'correct') {
+        if (changeClass === 'correct') {
             incrementScore(SCORE_POINTS)
         } else {
             document.getElementById('timer').innerHTML = count;
             count -= 5;
         }
-
         selectedChoice.parentElement.classList.add(changeClass)
 
         // make class disappear before going to the next question
@@ -225,7 +223,7 @@ choices.forEach(choice => {
 })
 
 incrementScore = num => {
-    score +=num
+    score += num
     scoreText.innerText = score
 }
 

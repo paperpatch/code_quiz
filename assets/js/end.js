@@ -1,4 +1,4 @@
-const username = document.querySelector('#username')
+const userInitials = document.querySelector('#userInitials')
 const saveScoreBtn = document.querySelector('#saveScoreBtn')
 const finalScore = document.querySelector('#finalScore')
 const mostRecentScore = localStorage.getItem('mostRecentScore')
@@ -9,9 +9,15 @@ const MAX_HIGH_SCORES = 5
 
 finalScore.innerText = mostRecentScore
 
-username.addEventListener('keyup', () => {
-    // makes it so that you can't enter a username in a blank state.
-    saveScoreBtn.disabled = !username.value
+userInitials.addEventListener('keyup', () => {
+    // makes it so that you can't enter a blank state.
+    saveScoreBtn.disabled = !userInitials.value
+    if (userInitials.value > 3) {
+        saveScoreBtn.disabled
+    }
+    if (isNaN(userInitials)) {
+        saveScoreBtn.disabled;
+    }
 })
 
 saveHighScore = e => {
@@ -19,7 +25,7 @@ saveHighScore = e => {
 
     const score = {
         score: mostRecentScore,
-        name: username.value
+        name: userInitials.value
     }
 
     highScores.push(score)
