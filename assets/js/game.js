@@ -132,7 +132,6 @@ startGame = () => {
     score = 0
     count = 30
     availableQuestions = [...questions]
-
     getNewQuestion()
 }
 
@@ -142,17 +141,18 @@ startGame = () => {
 var time = setInterval(myTimer, 1000);
 
 function myTimer() {
-    document.getElementById('timer').innerHTML = count - 1;
+    count--;
+    document.getElementById('timer').innerHTML = count;
 
-    // update persisted time interval
+/*     // update persisted time interval
     if (count-- > 0) {
         window.sessionStorage.setItem('timeLeft', count)
         console.log(sessionStorage);
     } else {
         window.sessionStorage.removeItem('timeLeft')
-    }
+    } */
 
-    count--;
+    
     console.log(count);
 
     if (count < 0) {
@@ -162,13 +162,13 @@ function myTimer() {
     }
 }
 
-// persisted time section
+/* // persisted time section
 window.onload = function () {
     let timeInterval = 30;
     // check if the session has the last counter value
     let timeLeft = window.sessionStorage.getItem('timeleft') || 30;
     console.log(timeLeft)
-}
+} */
 
 // pull new questions function. updates progress bar text/display and question numbers
 
@@ -208,6 +208,9 @@ choices.forEach(choice => {
 
         if(changeClass === 'correct') {
             incrementScore(SCORE_POINTS)
+        } else {
+            document.getElementById('timer').innerHTML = count;
+            count -= 5;
         }
 
         selectedChoice.parentElement.classList.add(changeClass)
