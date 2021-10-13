@@ -22,13 +22,13 @@ h2 {
 }
 
 .container {
-  width: 100%;
+  width: 70%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  padding: 50px 3rem;
+  padding: 50px 100px;
 }
 
 .flex-column {

@@ -144,15 +144,6 @@ function myTimer() {
     count--;
     document.getElementById('timer').innerHTML = count;
 
-    /*     // update persisted time interval
-        if (count-- > 0) {
-            window.sessionStorage.setItem('timeLeft', JSON.stringify(count))
-            console.log(sessionStorage);
-        } else {
-            window.sessionStorage.removeItem('timeLeft')
-        } */
-
-
     console.log(count);
 
     if (count < 0) {
@@ -161,14 +152,6 @@ function myTimer() {
         return window.location.assign('./end.html')
     }
 }
-
-/* // persisted time section
-window.onload = function () {
-    let timeInterval = 30;
-    // check if the session has the last counter value
-    let timeLeft = window.sessionStorage.getItem('timeleft') || 30;
-    console.log(timeLeft)
-} */
 
 // pull new questions function. updates progress bar text/display and question numbers
 
