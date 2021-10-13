@@ -14,8 +14,8 @@
         <div id="end" class="flex-column flex-center">
             <h1 id="finalScore">0</h1>
             <form class="end-form-container">
-                <h2 id="end-text">Enter your initials below to save your score!</h2>
-                <input type="text" name="name" id="userInitials" placeholder="Enter your initials">
+                <h2 id="end-text">Enter your Initials below to save your score!</h2>
+                <input type="text" name="name" id="userInitials" placeholder="Enter Your Initials" maxlength="3" onkeypress="return /[a-z]/i.test(event.key)" title="Limit of 3 Character Initials">
                 <button class="btn" id="saveScoreBtn" type="submit" onclick="saveHighScore(event)" disabled>Save</button>
             </form>
             <a href="./game.html" class="btn">Play Again</a>

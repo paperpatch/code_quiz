@@ -105,10 +105,13 @@ input::placeholder {
   color: #aaa;
 }
 
-#username {
+#userInitials {
   margin-bottom: 3rem;
   width: 100%;
   outline: none;
+  text-align: center;
+  font-size: 25px;
+  padding: 20px;
 }
 
 #end-text {

@@ -10,14 +10,7 @@ const MAX_HIGH_SCORES = 5
 finalScore.innerText = mostRecentScore
 
 userInitials.addEventListener('keyup', () => {
-    // makes it so that you can't enter a blank state.
     saveScoreBtn.disabled = !userInitials.value
-    if (userInitials.value > 3) {
-        saveScoreBtn.disabled
-    }
-    if (isNaN(userInitials)) {
-        saveScoreBtn.disabled;
-    }
 })
 
 saveHighScore = e => {
@@ -30,7 +23,7 @@ saveHighScore = e => {
 
     highScores.push(score)
 
-    highScores.sort((a,b) => {
+    highScores.sort((a, b) => {
         return b.score - a.score
     })
 
